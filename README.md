@@ -1,7 +1,7 @@
 ## ML-Model-Flask-Deployment
 Esse arquivo foi criado com intuito de servir como avaliação no processo seletivo da empresa SciCrop
 
-![alt text](https://i.ibb.co/H2G9Sb3/aaaa.png)
+![alt text](https://i.ibb.co/bX8mfTM/Scicrop-Screen.jpg)
 
 ### Pre-Requisitos
 Deve ter instalado Scikit Learn, Pandas, pickle (Para ser usado na primeira parte do processo, onde geramos os modelos de machine learning) e Flask (Para API) instalados.
