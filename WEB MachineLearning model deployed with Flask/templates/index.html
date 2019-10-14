@@ -51,41 +51,6 @@ div.b {
 <h2>CROP</h2>
 	<form action="{{ url_for('crop_predict')}}"method="post">
     	<input type="text" name="Area" placeholder="Area: 1201.5" required="required"/>
-          <select name="State">
-            <option value="0">Andaman and Nicobar Islands</option>
-            <option value="1">Andhra Pradesh</option>
-            <option value="2">Arunachal Pradesh</option>
-            <option value="3">Assam</option>
-            <option value="4">Bihar</option>
-            <option value="5">Chandigarh</option>
-            <option value="6">Chhattisgarh</option>
-            <option value="7">Dadra and Nagar Haveli</option>
-            <option value="8">Goa</option>
-            <option value="9">Gujarat</option>
-            <option value="10">Haryana</option>
-            <option value="11">Himachal Pradesh</option>
-            <option value="12">Jammu and Kashmir </option>
-            <option value="13">Jharkhand</option>
-            <option value="14">Karnataka</option>
-            <option value="15">Kerala</option>
-            <option value="16">Madhya Pradesh</option>
-            <option value="17">Maharashtra</option>
-            <option value="18">Manipur</option>
-            <option value="19">Meghalaya</option>
-            <option value="20">Mizoram</option>
-            <option value="21">Nagaland</option>
-            <option value="22">Odisha</option>
-            <option value="23">Puducherry</option>
-            <option value="24">Punjab</option>
-            <option value="25">Rajasthan</option>
-            <option value="26">Sikkim</option>
-            <option value="27">Tamil Nadu</option>
-            <option value="28">Telangana </option>
-            <option value="29">Tripura</option>
-            <option value="30">Uttar Pradesh</option>
-            <option value="31">Uttarakhand</option>
-            <option value="32">West Bengal</option>
-          </select>
 		<select name="District" required="required">
     		<option value="0">PARAGANAS NORTH</option>
             <option value="1">PARAGANAS SOUTH</option>
@@ -734,6 +699,16 @@ div.b {
             <option value="644">YAVATMAL</option>
             <option value="645">ZUNHEBOTO</option>
 		</select>
+        <select name="Season">
+            <option value="0">Autumn     </option>
+            <option value="1">Kharif     </option>
+            <option value="2">Rabi       </option>
+            <option value="3">Summer     </option>
+            <option value="4">Whole Year </option>
+            <option value="5">Winter     </option>        
+        </select>
+		
+		
 		</br></br>
         <button type="submit" class="btn btn-primary btn-block btn-large">O que devo cultivar?</button>
     </form>
