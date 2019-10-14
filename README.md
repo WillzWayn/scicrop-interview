@@ -6,7 +6,7 @@ Deve ter instalado Scikit Learn, Pandas, pickle (Para ser usado na primeira part
 
 ### Estrutura do projeto
 Projeto foi dividido em duas partes.
-1. Pasta Modelo Machine-Learning, onde temos os codigos usados para gerar e salvar(com pickle) nosso modelo de ML.
+1. Pasta Modelo Machine-Learning, onde temos os códigos usados para gerar e salvar(com pickle) nosso modelo de ML.
 
 2. Aplicação Web com:
     1. app.py - Esse arquivo contem nossa aplicação FLASK. Ele é o responsável por fazer a integração entre a API e a pagina HTML.
@@ -21,7 +21,7 @@ Projeto foi dividido em duas partes.
 2. Teremos como resultado
     1. Arquivo india_crop_gdp_1997_2015.csv com os dados das duas tabelas.
     2. Arquivo model_1_FindCrop.sav contendo a serialização do modelo que preve o cultivo.
-    3. Arquivo model_2_FindProduction.sav que contem a serialização de um modelo que preve a produção agrícola de um cultivo.
+    3. Arquivo model_2_FindProduction.sav que contem a serialização de um modelo que prevê a produção agrícola de um cultivo.
     
 #### Aplicação WEB
 
