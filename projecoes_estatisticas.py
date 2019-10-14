@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[12]:
 
 
 # Import modules
@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore")
 path='WEB MachineLearning model deployed with Flask/static/modelos/'
 
 
-# In[2]:
+# In[13]:
 
 
 # Read the initial dataset
@@ -31,61 +31,61 @@ production on various location acquired from the Indian government web page.
 https://data.gov.in""";
 
 
-# In[3]:
+# In[14]:
 
 
 # A Look in the dataframe
 apy.head()
 
 
-# In[4]:
+# In[15]:
 
 
 # Check Shape
 apy.shape
 
 
-# In[5]:
+# In[16]:
 
 
 # Check Variable types
 apy.dtypes
 
 
-# In[6]:
+# In[17]:
 
 
 # check for null values
 apy.isnull().sum()
 
 
-# In[7]:
+# In[18]:
 
 
 #Years in apy dataset
 #sorted((apy.Crop_Year.value_counts().index))
 
 
-# In[8]:
+# In[19]:
 
 
 gdp = pd.read_csv('API_NY.GDP.MKTP.CD_DS2_en_csv_v2_247793.csv', skiprows=4)
 
 
-# In[9]:
+# In[20]:
 
 
 gdp.head(3)
 
 
-# In[10]:
+# In[21]:
 
 
 # Locate India
 gdp.loc[gdp['Country Name'] == 'India']
 
 
-# In[11]:
+# In[22]:
 
 
 # Select only 1997-2015
@@ -95,7 +95,7 @@ end_year = gdp.columns.get_loc('2015')
 gdp_9715 = gdp.iloc[107, start_year:end_year+1]
 
 
-# In[12]:
+# In[23]:
 
 
 # Create a Dataframe for gdp
@@ -106,7 +106,7 @@ gdp_df = gdp_df.reset_index(drop=True)
 gdp_df.head()
 
 
-# In[13]:
+# In[24]:
 
 
 # Check if Crop_Year have all values from 1997 to 2015
@@ -114,21 +114,21 @@ apy_crop_year = apy['Crop_Year']
 apy_crop_year.unique()
 
 
-# In[14]:
+# In[25]:
 
 
 # Check Datatypes
 gdp_df.dtypes
 
 
-# In[15]:
+# In[26]:
 
 
 # Convert year to int
 gdp_df['Year'] = gdp_df['Year'].astype(int)
 
 
-# In[16]:
+# In[27]:
 
 
 # Map all GDP values to the respective year
@@ -139,42 +139,42 @@ apy_crop_year_dict = {'GDP': apy_crop_year}
 gdp_final = pd.DataFrame(apy_crop_year_dict)
 
 
-# In[17]:
+# In[28]:
 
 
 # See the data type
 gdp_final['GDP'].dtype
 
 
-# In[18]:
+# In[29]:
 
 
 # Concatenate the DataFrames
 india_crop_gdp_1997_2015 = pd.concat([apy, gdp_final], axis=1, sort=False)
 
 
-# In[19]:
+# In[30]:
 
 
 # A look into DataFrame
 india_crop_gdp_1997_2015.head()
 
 
-# In[20]:
+# In[31]:
 
 
 # Save as .csv
 india_crop_gdp_1997_2015.to_csv('india_crop_gdp_1997_2015.csv')
 
 
-# In[21]:
+# In[32]:
 
 
 india_crop_gdp_1997_2015= pd.read_csv('india_crop_gdp_1997_2015.csv')
 india_crop_gdp_1997_2015.columns
 
 
-# In[22]:
+# In[33]:
 
 
 # Label Enconding
@@ -194,10 +194,10 @@ del RelationItens['Production']
 RelationItens.keys()
 
 
-# In[23]:
+# In[42]:
 
 
-#for i in RelationItens['Crop'][0]:
+#for i in RelationItens['Season'][0]:
 #    print ('        <option value="{}">{}</option>'.format(i[1],i[0]))
 
 
@@ -205,11 +205,11 @@ RelationItens.keys()
 # 
 # ## For the first algorithm (Classification problem)
 
-# In[24]:
+# In[43]:
 
 
 # Select variables (Features)
-X1 = india_crop_gdp_1997_2015[['Area', 'State_Name', 'District_Name']]
+X1 = india_crop_gdp_1997_2015[['Area', 'District_Name', 'Season']]
 y1 = india_crop_gdp_1997_2015['Crop']
 
 
@@ -217,7 +217,7 @@ y1 = india_crop_gdp_1997_2015['Crop']
 # 
 # - Algoritmo 1:  Objetivo: descobrir a CROP (Cultivo). A partir de 3 dados aleatórios (AREA, STATE, DISTRICT) inseridos pelo usuário, seja calculado o resultado de CROP
 
-# In[25]:
+# In[44]:
 
 
 # Split Train and Test
@@ -232,7 +232,7 @@ model1= DecisionTreeClassifier(random_state=42)
 model1.fit(x1_train, y1_train)
 
 
-# In[26]:
+# In[45]:
 
 
 # Predict and calculate scores
@@ -256,7 +256,13 @@ print('Recall: ', rec)
 print('F1-Score: ', f1)
 
 
-# In[27]:
+# In[ ]:
+
+
+
+
+
+# In[46]:
 
 
 #------   Saving the model with pickle -----------------
@@ -270,7 +276,7 @@ pickle.dump(model1, open(path+filename, 'wb'))
 # 
 # - Algoritmo 2: Objetivo: descobrir a PRODUCTION (Produção agrícola de um cultivo). A partir de 3 dados aleatórios (AREA, CROP e GDP) inseridos pelo usuário, seja calculado o resultado de PRODUCTION
 
-# In[28]:
+# In[47]:
 
 
 # Select variables (Features)
@@ -278,7 +284,7 @@ x2 = india_crop_gdp_1997_2015[['Area', 'Crop', 'GDP']]
 y2 = india_crop_gdp_1997_2015['Production']
 
 
-# In[29]:
+# In[48]:
 
 
 # Split Train and Test
@@ -287,7 +293,7 @@ x2_train, x2_test, y2_train, y2_test = train_test_split(x2, y2,
                                                    random_state = 42)
 
 
-# In[30]:
+# In[49]:
 
 
 # Train the Decision Tree Regressor
@@ -297,7 +303,7 @@ model2 = DecisionTreeRegressor(random_state=42)
 model2.fit(x2_train, y2_train)
 
 
-# In[31]:
+# In[50]:
 
 
 # Define o nome do arquivo em disco que irá guardar o nosso modelo
@@ -306,7 +312,7 @@ model_2_product = 'model2_P.sav'
 pickle.dump(model2, open(path+model_2_product, 'wb'))
 
 
-# In[32]:
+# In[51]:
 
 
 # Calculate the metrics
@@ -332,3 +338,9 @@ print('MAD: ', mad)
 # - MSE (Mean Squared Error) represents the difference between the original and predicted values extracted by squared the average difference over the data set.
 # - RMSE (Root Mean Squared Error) is the error rate by the square root of MSE.
 # - R-squared (Coefficient of determination) represents the coefficient of how well the values fit compared to the original values. The value from 0 to 1 interpreted as percentages. The higher the value is, the better the model is.
+
+# In[ ]:
+
+
+
+
