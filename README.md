@@ -36,11 +36,6 @@ Irá aparecer a URL que você deve acessar a aplicação; Por default, o flask r
 
 2. Navegue para URL http://localhost:5000
 
-Deve aparecer essa tela:
-
-![alt text](https://i.ibb.co/H2G9Sb3/aaaa.png)
-
-Apos digitar os valores desejados e usar o botão para prever(no exemplo previ o cultivo) temos a seguinte tela:
-![alt text](https://i.ibb.co/82fDhL2/bbbb.png)
+Apos digitar os valores desejados e usar o botão para prever, teremos uma tela com os resultados.
 
 
