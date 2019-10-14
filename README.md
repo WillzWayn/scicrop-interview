@@ -17,7 +17,7 @@ Projeto foi dividido em duas partes.
 
 ### Rodando o projeto
 #### Modelo de Machine Learning
-1. Apos instalado as dependências, precisamos rodar o código com o notebook jupyter ou através do comando 'python projecoes_estatisticas.py' com os arquivos (apy.csv e API_NY.GDP.MKTP.CD_DS2_en_csv_v2_247793.csv) na pasta.
+1. Apos instalado as dependências, precisamos rodar o código com o notebook jupyter ou através do comando <b>python projecoes_estatisticas.py</b> com os arquivos (apy.csv e API_NY.GDP.MKTP.CD_DS2_en_csv_v2_247793.csv) na pasta.
 2. Teremos como resultado
     1. Arquivo india_crop_gdp_1997_2015.csv com os dados das duas tabelas.
     2. Arquivo model_1_FindCrop.sav contendo a serialização do modelo que preve o cultivo.
