@@ -4,7 +4,6 @@ import pickle
 from scicrop import *
 
 app = Flask(__name__)
-model = pickle.load(open('static/modelos/model.pkl', 'rb'))
 model1_C = pickle.load(open('static/modelos/model_1_FindCrop.sav', 'rb'))
 model2 = pickle.load(open('static/modelos/model2_P.sav', 'rb'))
 
