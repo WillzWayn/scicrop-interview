@@ -181,7 +181,9 @@ india_crop_gdp_1997_2015.columns
 from sklearn import preprocessing
 RelationItens ={}
 for f in india_crop_gdp_1997_2015.columns:
-    if india_crop_gdp_1997_2015[f].dtype=='object': 
+    if f == 'Production':
+        continue
+    if india_crop_gdp_1997_2015[f].dtype =='object': 
         vet = []
         le = preprocessing.LabelEncoder()
         itens = (sorted(list(india_crop_gdp_1997_2015[f].value_counts().index)))
@@ -190,7 +192,7 @@ for f in india_crop_gdp_1997_2015.columns:
         vet.append([[a,b] for a,b in zip (itens,itens_edited)])
         india_crop_gdp_1997_2015[f] = le.transform(list(india_crop_gdp_1997_2015[f].values))
         RelationItens[f]=vet
-del RelationItens['Production']
+#del RelationItens['Production']
 RelationItens.keys()
 
 
@@ -280,8 +282,10 @@ pickle.dump(model1, open(path+filename, 'wb'))
 
 
 # Select variables (Features)
-x2 = india_crop_gdp_1997_2015[['Area', 'Crop', 'GDP']]
-y2 = india_crop_gdp_1997_2015['Production']
+india_crop_gdp_1997_2015_2 = india_crop_gdp_1997_2015[india_crop_gdp_1997_2015['Production'] != '=']
+
+x2 = india_crop_gdp_1997_2015_2[['Area', 'Crop', 'GDP']]
+y2 = india_crop_gdp_1997_2015_2['Production']
 
 
 # In[48]:
