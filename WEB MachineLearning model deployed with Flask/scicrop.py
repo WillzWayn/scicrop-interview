@@ -5,7 +5,17 @@ Created on Sun Oct 13 13:07:55 2019
 @author: William
 """
 # scricrop.py - contains functions to run model
+## Model List
+import pickle
+
+model1_C = pickle.load(open('static/modelos/model_1_FindCrop.sav', 'rb'))
+#modelosProduction={}
+#for i in range(123):
+#    modelosProduction[str(i)] = pickle.load(open('static/modelos/model2_P_cropEqual'+str(i)+'.sav', 'rb'))
     
+model2 = pickle.load(open('static/modelos/model2_P_cropEqual_Final.sav', 'rb'))
+
+
 
 crop_list = [['Apple', 0],
  ['Arcanut (Processed)', 1],

@@ -4,8 +4,7 @@ import pickle
 from scicrop import *
 
 app = Flask(__name__)
-model1_C = pickle.load(open('static/modelos/model_1_FindCrop.sav', 'rb'))
-model2 = pickle.load(open('static/modelos/model2_P.sav', 'rb'))
+
 
 @app.route('/')
 def home():
@@ -17,13 +16,20 @@ def production():
     '''
     For rendering results on HTML GUI
     '''
-    features = [float(x) for x in request.form.values()]
-    
-    final = np.array(features)
-
-    result = model2.predict([final])
-
-    return render_template('index.html', prediction_text='Sua Produção agricula será de: {}'.format(result[0]))
+    try:
+        # Features contem Area, Crop, GDP
+        features = [x for x in request.form.values()]
+        
+        #np array com as informações de Area e GDP
+        predictValues = np.array([float(features[0])])
+        
+        # Puxando as informações do dict do crop para usar aquela regLinear !
+        result = model2[int(features[1])].predict([predictValues])
+        
+        return render_template('index.html', prediction_text='Sua Produção agricula será de: {:.2f}'.format(abs(result[0][0])))
+        
+    except KeyError:
+        return render_template('index.html', prediction_text='Desculpe mas esse cultivo que deseja prever a produção ainda não foi mapeado. Caso deseje desenvolver um trabalho nessa área, entre em contato conosco')
 
 
 @app.route('/crop_predict', methods=['POST'])
